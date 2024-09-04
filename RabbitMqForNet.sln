@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35222.181
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventBusMq", "EventBusMq\EventBusMq.csproj", "{721F3180-74E4-4AB6-84FF-D796C997E6EA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventBus.WebApi", "EventBus.WebApi\EventBus.WebApi.csproj", "{C60D31E4-2368-4F4B-BDA7-54F55745490F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{721F3180-74E4-4AB6-84FF-D796C997E6EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{721F3180-74E4-4AB6-84FF-D796C997E6EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{721F3180-74E4-4AB6-84FF-D796C997E6EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{721F3180-74E4-4AB6-84FF-D796C997E6EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C60D31E4-2368-4F4B-BDA7-54F55745490F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C60D31E4-2368-4F4B-BDA7-54F55745490F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C60D31E4-2368-4F4B-BDA7-54F55745490F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C60D31E4-2368-4F4B-BDA7-54F55745490F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2012F36B-7DBF-433D-A783-BB253077CB5E}
+	EndGlobalSection
+EndGlobal
