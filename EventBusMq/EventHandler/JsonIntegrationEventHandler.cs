@@ -1,18 +1,14 @@
-﻿using System.Text.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Text.Json;
 
 namespace EventBusMq.EventHandler;
 
 public abstract class JsonIntegrationEventHandler<T> : IIntegrationEventHandler
 {
-    public Task Handle(string eventName, string json)
+    public Task Handle(string eventName, string json, CancellationToken cancellationToken = default)
     {
         T? eventData = JsonSerializer.Deserialize<T>(json);
-        return HandleJson(eventName, eventData);
+        return HandleJson(eventName, eventData, cancellationToken);
     }
-    public abstract Task HandleJson(string eventName, T? eventData);
+
+    public abstract Task HandleJson(string eventName, T? eventData, CancellationToken cancellationToken = default);
 }

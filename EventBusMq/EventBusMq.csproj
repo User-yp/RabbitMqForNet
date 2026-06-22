@@ -1,19 +1,37 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <PackageId>RabbitMQForNet</PackageId>
+    <Title>Net RabbitMQ EventBus</Title>
+    <Authors>pengye</Authors>
+    <Company>pengye</Company>
+    <Product>RabbitMQForNet</Product>
+    <PackageProjectUrl>https://github.com/User-yp/RabbitMqForNet</PackageProjectUrl>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <RepositoryUrl>https://github.com/User-yp/RabbitMqForNet</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>.net;RabbitMQ;EventBus</PackageTags>
+    <Description>A lightweight RabbitMQ event bus for .NET with retry, DLQ, and graceful shutdown support.</Description>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AsmResolver" Version="5.5.1" />
-    <PackageReference Include="AsmResolver.DotNet" Version="5.5.1" />
+    <None Include="..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="8.0.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.1" />
     <PackageReference Include="Microsoft.Extensions.Options" Version="8.0.2" />
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="RabbitMQ.Client" Version="6.8.1" />
+    <PackageReference Include="StackExchange.Redis" Version="2.8.16" />
   </ItemGroup>
 
 </Project>

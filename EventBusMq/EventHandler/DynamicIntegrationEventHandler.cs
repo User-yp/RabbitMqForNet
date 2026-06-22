@@ -1,21 +1,15 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Text.Json;
 
 namespace EventBusMq.EventHandler;
 
 public abstract class DynamicIntegrationEventHandler : IIntegrationEventHandler
 {
-    public Task Handle(string eventName, string eventData)
+    public Task Handle(string eventName, string eventData, CancellationToken cancellationToken = default)
     {
-        //https://github.com/dotnet/runtime/issues/53195
-        //https://github.com/dotnet/core/issues/6444
-        //所以暂时用Dynamic.Json来实现。
-        dynamic dynamicEventData = JsonConvert.DeserializeObject<dynamic>(eventData);
-        return HandleDynamic(eventName, dynamicEventData);
+        using var doc = JsonDocument.Parse(eventData);
+        var dynamicEventData = doc.RootElement.Clone();
+        return HandleDynamic(eventName, dynamicEventData, cancellationToken);
     }
-    public abstract Task HandleDynamic(string eventName, dynamic eventData);
+
+    public abstract Task HandleDynamic(string eventName, JsonElement eventData, CancellationToken cancellationToken = default);
 }

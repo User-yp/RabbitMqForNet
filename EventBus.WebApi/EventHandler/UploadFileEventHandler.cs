@@ -1,24 +1,28 @@
-﻿using EventBusMq.Attributes;
+using EventBusMq.Attributes;
 using EventBusMq.EventHandler;
-using Microsoft.Extensions.Configuration.UserSecrets;
+using System.Text.Json;
 
 namespace EventBus.WebApi.EventHandler;
 
-[EventName("FileService.UploadFile")]
+[EventName("UploadFile")]
 public class UploadFileEventHandler : DynamicIntegrationEventHandler
 {
-    public override async Task HandleDynamic(string eventName, dynamic eventData)
+    public override async Task HandleDynamic(string eventName, JsonElement eventData, CancellationToken cancellationToken = default)
     {
-        CancellationToken can = default;
-        var fileName = (string)eventData.FileName;
-        var fileBytes = (byte[])eventData.File;
+        var fileName = eventData.GetProperty("FileName").GetString() ?? "uploaded_file";
+        var fileBytes = eventData.GetProperty("File").GetBytesFromBase64();
 
-        using var memoryStream = new MemoryStream(fileBytes);
+        // 使用配置的路径或默认路径
+        var uploadPath = Path.Combine(
+            Environment.GetFolderPath(Environment.SpecialFolder.Desktop),
+            "RabbitMqUploads");
 
-        using (var fileStream = File.Create($"C:\\Users\\25069\\Desktop\\{fileName}"))
-        {
-            await memoryStream.CopyToAsync(fileStream);
-        }
+        if (!Directory.Exists(uploadPath))
+            Directory.CreateDirectory(uploadPath);
+
+        var filePath = Path.Combine(uploadPath, fileName);
+        await File.WriteAllBytesAsync(filePath, fileBytes, cancellationToken);
+
+        Console.WriteLine($"文件已保存: {filePath}");
     }
-    
 }

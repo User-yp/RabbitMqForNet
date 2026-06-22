@@ -1,13 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace EventBusMq.Attributes;
+﻿namespace EventBusMq.Attributes;
 
 [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = true)]
-public class EventNameAttribute(string name) : Attribute
+public class EventNameAttribute : Attribute
 {
-    public string Name { get; init; } = name;
+    public string Name { get; init; }
+
+    public EventNameAttribute(string name)
+    {
+        Name = name;
+    }
+    
 }
